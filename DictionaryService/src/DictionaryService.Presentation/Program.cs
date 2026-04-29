@@ -1,19 +1,11 @@
-var builder = WebApplication.CreateBuilder(args);
+using DictionaryService.Presentation.Configuration;
 
-builder.Services.AddControllers();
-builder.Services.AddOpenApi();
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-var app = builder.Build();
+builder.Services.AddConfiguration(builder.Configuration);
 
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
+WebApplication app = builder.Build();
 
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
+app.Configure();
 
 app.Run();
