@@ -4,8 +4,8 @@ namespace DictionaryService.Domain.Entities;
 
 public class Location
 {
-    private readonly List<Department> _departments = new();
-    public IReadOnlyList<Department> Departments => _departments;
+    private readonly List<DepartmentPosition> _departments = new();
+    public IReadOnlyList<DepartmentPosition> Departments => _departments;
 
     private Location(Guid id, NonEmptyString name, Address address)
     {
@@ -33,7 +33,7 @@ public class Location
         Address = newAddress;
     }
 
-    public void AddDepartment(Department department)
+    public void AddDepartment(DepartmentPosition department)
     {
         if (!_departments.Contains(department))
         {
@@ -41,7 +41,7 @@ public class Location
         }
     }
 
-    public void RemoveDepartment(Department department)
+    public void RemoveDepartment(DepartmentPosition department)
     {
         _departments.Remove(department);
     }

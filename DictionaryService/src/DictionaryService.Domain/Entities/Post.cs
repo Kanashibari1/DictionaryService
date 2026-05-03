@@ -8,8 +8,8 @@ public class Post
     public NonEmptyString Title { get; private set; }
     public NonEmptyString Description { get; private set; }
     
-    private readonly List<Department> _departments;
-    public List<Department> Departments => _departments;
+    private readonly List<DepartmentPosition> _departments;
+    public List<DepartmentPosition> Departments => _departments;
 
     private Post(Guid id, NonEmptyString title, NonEmptyString description = null)
     {
@@ -33,13 +33,13 @@ public class Post
         Description = newDescription;
     }
 
-    public void AddDepartment(Department department)
+    public void AddDepartment(DepartmentPosition department)
     {
         if (!_departments.Contains(department))
             _departments.Add(department);
     }
 
-    public void RemoveDepartment(Department department)
+    public void RemoveDepartment(DepartmentPosition department)
     {
         _departments.Remove(department);
     }

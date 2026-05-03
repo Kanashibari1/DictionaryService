@@ -15,11 +15,11 @@ public class Department
     private readonly List<Department> _children = new();
     public IReadOnlyList<Department> Children => _children;
     
-    private readonly List<Location> _locations = new();
-    public IReadOnlyList<Location> Locations => _locations;
+    private readonly List<DepartmentLocation> _locations = new();
+    public IReadOnlyList<DepartmentLocation> Locations => _locations;
     
-    private readonly List<Post> _post = new();
-    public IReadOnlyList<Post> Post => _post;
+    private readonly List<DepartmentPosition> _post = new();
+    public IReadOnlyList<DepartmentPosition> Post => _post;
 
     private Department(Guid id, NonEmptyString name, Slug slug, HierarchyPath hierarchyPath, Guid? parentId = null)
     {
@@ -69,47 +69,55 @@ public class Department
         Slug = newSlug;
     }
 
-    public void AddLocation(Location location)
+    public DepartmentLocation AddLocation(Location location)
     {
         if (location == null)
         {
             throw new DomainException("Location cannot be null.");
         }
         
-        if(!_locations.Contains(location))
-        {
-            _locations.Add(location);
-            location.AddDepartment(this);
-        }
+        return DepartmentLocation.Create(this, location);
     }
 
     public void RemoveLocation(Location location)
     {
-        if (_locations.Remove(location))
+        if (location == null)
         {
-            location.RemoveDepartment(this);
+            throw new DomainException("Location cannot be null.");
         }
+        
+        var departmentLocation = _locations.FirstOrDefault(dl => dl.LocationId == location.Id);
+
+        if (departmentLocation == null)
+        {
+            throw new DomainException($"Department is not linked to location '{location.Name}'");
+        }
+        
+        _locations.Remove(departmentLocation);
     }
 
-    public void AddPosition(Post post)
+    public DepartmentPosition AddPost(Post post)
     {
         if (post == null)
         {
             throw new DomainException("Post cannot be null.");
         }
 
-        if (!_post.Contains(post))
-        {
-            _post.Add(post);
-            post.AddDepartment(this);
-        }
+        return DepartmentPosition.Create(this, post);
     }
 
     public void RemovePost(Post post)
     {
-        if (_post.Remove(post))
+        if (post == null)
         {
-            post.RemoveDepartment(this);
+            throw new DomainException("Position cannot be null.");
+        }
+        
+        DepartmentPosition? departmentPost = _post.FirstOrDefault(dp => dp.PostId == post.Id);
+
+        if (departmentPost != null)
+        {
+            _post.Remove(departmentPost);
         }
     }
 }
