@@ -1,8 +1,54 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DictionaryService.Domain", "src\DictionaryService.Domain\DictionaryService.Domain.csproj", "{5B69A393-00F5-4059-938E-2C595A80DBE1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E9CC1E2E-BC99-413F-9238-1E4D1655C9C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DictionaryService.Infrastructure", "src\DictionaryService.Infrastructure\DictionaryService.Infrastructure.csproj", "{CFFE3256-426F-4A5C-8958-463A09BB58FA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D731B578-F22D-461C-972E-7BE3FF373D44}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DictionaryService.Contracts", "src\DictionaryService.Contracts\DictionaryService.Contracts.csproj", "{6C9D188C-BDED-4E42-ACEE-4DD647A37AEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DictionaryService.Application", "src\DictionaryService.Application\DictionaryService.Application.csproj", "{708753CA-3EC6-4E0F-AFED-0682B8351A06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DictionaryService.Presentation", "src\DictionaryService.Presentation\DictionaryService.Presentation.csproj", "{07A624B8-9F72-4852-98B9-534203F2EC81}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5B69A393-00F5-4059-938E-2C595A80DBE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B69A393-00F5-4059-938E-2C595A80DBE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B69A393-00F5-4059-938E-2C595A80DBE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B69A393-00F5-4059-938E-2C595A80DBE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFFE3256-426F-4A5C-8958-463A09BB58FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFFE3256-426F-4A5C-8958-463A09BB58FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFFE3256-426F-4A5C-8958-463A09BB58FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFFE3256-426F-4A5C-8958-463A09BB58FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C9D188C-BDED-4E42-ACEE-4DD647A37AEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C9D188C-BDED-4E42-ACEE-4DD647A37AEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C9D188C-BDED-4E42-ACEE-4DD647A37AEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C9D188C-BDED-4E42-ACEE-4DD647A37AEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{708753CA-3EC6-4E0F-AFED-0682B8351A06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{708753CA-3EC6-4E0F-AFED-0682B8351A06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{708753CA-3EC6-4E0F-AFED-0682B8351A06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{708753CA-3EC6-4E0F-AFED-0682B8351A06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07A624B8-9F72-4852-98B9-534203F2EC81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07A624B8-9F72-4852-98B9-534203F2EC81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07A624B8-9F72-4852-98B9-534203F2EC81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07A624B8-9F72-4852-98B9-534203F2EC81}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5B69A393-00F5-4059-938E-2C595A80DBE1} = {E9CC1E2E-BC99-413F-9238-1E4D1655C9C9}
+		{CFFE3256-426F-4A5C-8958-463A09BB58FA} = {E9CC1E2E-BC99-413F-9238-1E4D1655C9C9}
+		{6C9D188C-BDED-4E42-ACEE-4DD647A37AEF} = {E9CC1E2E-BC99-413F-9238-1E4D1655C9C9}
+		{708753CA-3EC6-4E0F-AFED-0682B8351A06} = {E9CC1E2E-BC99-413F-9238-1E4D1655C9C9}
+		{07A624B8-9F72-4852-98B9-534203F2EC81} = {E9CC1E2E-BC99-413F-9238-1E4D1655C9C9}
 	EndGlobalSection
 EndGlobal
