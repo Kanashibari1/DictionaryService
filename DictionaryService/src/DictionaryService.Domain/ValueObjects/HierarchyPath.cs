@@ -2,7 +2,7 @@
 
 namespace DictionaryService.Domain.ValueObjects;
 
-public class HierarchyPath
+public record class HierarchyPath
 {
     private static readonly char Separator = '/';
     

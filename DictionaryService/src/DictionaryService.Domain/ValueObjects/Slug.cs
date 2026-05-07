@@ -3,7 +3,7 @@ using DictionaryService.Domain.Common;
 
 namespace DictionaryService.Domain.ValueObjects;
 
-public class Slug
+public record class Slug
 {
     public string Value { get;}
 

@@ -2,19 +2,17 @@ using DictionaryService.Domain.Common;
 
 namespace DictionaryService.Domain.ValueObjects;
 
-public class Address
+public record class Address
 {
-    public string Country { get; private set; }
-    public string City { get; private set; }
-    public string Street { get; private set; }
-    public string? Building { get; private set; }
-    public string? OfficeNumber { get; private set; }
+    public string Country { get; }
+    public string City { get;}
+    public string Street { get;}
+    public string? Building { get; }
+    public string? OfficeNumber { get; }
 
     private Address()
     {
-        Country = null!;
-        City = null!;
-        Street = null!;
+     
     }
 
     public Address(string country, string city, string street, string? building, string? officeNumber)

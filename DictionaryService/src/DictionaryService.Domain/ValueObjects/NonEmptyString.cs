@@ -3,7 +3,7 @@ using DictionaryService.Domain.Common;
 
 namespace DictionaryService.Domain.ValueObjects;
 
-public class NonEmptyString
+public record class NonEmptyString
 {
     public string Value { get;}
 
