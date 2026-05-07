@@ -4,11 +4,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DictionaryService.Domain", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E9CC1E2E-BC99-413F-9238-1E4D1655C9C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DictionaryService.Infrastructure", "src\DictionaryService.Infrastructure\DictionaryService.Infrastructure.csproj", "{CFFE3256-426F-4A5C-8958-463A09BB58FA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DictionaryService.Infrastructure.Postgres", "src\DictionaryService.Infrastructure.Postgres\DictionaryService.Infrastructure.Postgres.csproj", "{CFFE3256-426F-4A5C-8958-463A09BB58FA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D731B578-F22D-461C-972E-7BE3FF373D44}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		docker-compose.yml = docker-compose.yml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DictionaryService.Contracts", "src\DictionaryService.Contracts\DictionaryService.Contracts.csproj", "{6C9D188C-BDED-4E42-ACEE-4DD647A37AEF}"

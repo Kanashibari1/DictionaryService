@@ -3,7 +3,7 @@ using DictionaryService.Domain.Common;
 
 namespace DictionaryService.Domain.ValueObjects;
 
-public class Slug
+public record class Slug
 {
     public string Value { get;}
 
@@ -19,16 +19,18 @@ public class Slug
             throw new DomainException("Slug cannot be empty.");
         }
 
-        if (System.Text.RegularExpressions.Regex.IsMatch(value, @"^[a-zA-Z]+$"))
+        string normalized = value.Trim().ToLowerInvariant();
+
+        if (!System.Text.RegularExpressions.Regex.IsMatch(normalized, @"^[a-z0-9_-]+$"))
         {
             throw new DomainException("Slug can only contain lowercase letters, numbers, hyphens and underscores.");
         }
 
-        if (value.Length > 100)
+        if (normalized.Length > 100)
         {
             throw new DomainException("Slug cannot exceed 100 characters.");
         }
         
-        return new Slug(value.ToLowerInvariant());
+        return new Slug(normalized);
     }
 }

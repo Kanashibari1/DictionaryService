@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using DictionaryService.Infrastructure.Postgres;
 using DictionaryService.Presentation.EndpointsSetting;
 using Microsoft.OpenApi;
 
@@ -8,7 +9,9 @@ public static class DependencyUnjection
 {
     public static IServiceCollection AddConfiguration(this IServiceCollection services, IConfiguration configuration)
     {
-        return services.AddOpenApiSpec().AddEndpoints(typeof(Program).Assembly);;
+        return services
+            .AddOpenApiSpec()
+            .AddEndpoints(typeof(Program).Assembly);
     }
     
     private static IServiceCollection AddOpenApiSpec(this IServiceCollection services)

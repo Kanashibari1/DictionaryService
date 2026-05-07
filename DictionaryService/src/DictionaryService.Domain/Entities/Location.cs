@@ -7,16 +7,22 @@ public class Location
     private readonly List<DepartmentPosition> _departments = new();
     public IReadOnlyList<DepartmentPosition> Departments => _departments;
 
+    public Guid Id { get; private set; }
+    public NonEmptyString Name { get; private set; }
+    public Address Address { get; private set; }
+
+    private Location()
+    {
+        Name = null!;
+        Address = null!;
+    }
+
     private Location(Guid id, NonEmptyString name, Address address)
     {
         Id = id;
         Name = name;
         Address = address;
     }
-    
-    public Guid Id { get; }
-    public NonEmptyString Name { get; private set; }
-    public Address Address { get; private set; }
 
     public static Location Create(NonEmptyString name, Address address)
     {

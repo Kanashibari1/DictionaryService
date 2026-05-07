@@ -10,10 +10,18 @@ public class DepartmentPosition
     public Guid PostId { get; private set; }
     public Post Post { get; private set; }
 
+    private DepartmentPosition()
+    {
+        Department = null!;
+        Post = null!;
+    }
+
     private DepartmentPosition(Department department, Post post)
     {
         Department = department ?? throw new DomainException("Department cannot be null");
         Post = post?? throw new DomainException("Position cannot be null");
+        DepartmentId = department.Id;
+        PostId = post.Id;
     }
 
     public static DepartmentPosition Create(Department department, Post post)

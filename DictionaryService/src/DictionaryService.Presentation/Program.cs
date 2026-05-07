@@ -1,11 +1,22 @@
-using DictionaryService.Presentation.Configuration;
+using DictionaryService.Infrastructure.Postgres;
 
-WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddConfiguration(builder.Configuration);
+builder.Services.AddControllers();
+builder.Services.AddOpenApi();
+
+builder.Services.AddScoped<DictionaryServiceDbContext>(sp => new DictionaryServiceDbContext(
+    builder.Configuration.GetConnectionString("DictionaryServiceDb")!));
 
 WebApplication app = builder.Build();
 
-app.Configure();
+if (app.Environment.IsDevelopment())
+{
+    app.MapOpenApi();
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/openapi/v1.json", "DictionaryService");
+    });
+}
 
-app.Run();
+app.MapControllers();
