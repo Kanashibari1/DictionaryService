@@ -10,6 +10,12 @@ public class DepartmentLocation
     public Guid LocationId { get; private set; }
     public Location Location { get; private set; }
 
+    private DepartmentLocation()
+    {
+        Department = null!;
+        Location = null!;
+    }
+
     public DepartmentLocation(Department department, Location location)
     {
         Department = department;

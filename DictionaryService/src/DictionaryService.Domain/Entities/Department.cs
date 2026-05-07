@@ -5,10 +5,10 @@ namespace DictionaryService.Domain.Entities;
 
 public class Department
 {
-    public Guid Id { get; }
+    public Guid Id { get;}
     public NonEmptyString Name { get; private set; }
     public Slug Slug { get; private set; }
-    public HierarchyPath HierarchyPath { get; private set; }
+    public HierarchyPath HierarchyPath { get;}
     public Guid? ParentId { get; private set; }
     public Department? Parent { get; private set; }
     
@@ -20,6 +20,13 @@ public class Department
     
     private readonly List<DepartmentPosition> _post = new();
     public IReadOnlyList<DepartmentPosition> Post => _post;
+
+    private Department()
+    {
+        Name = null!;
+        Slug = null!;
+        HierarchyPath = null!;
+    }
 
     private Department(Guid id, NonEmptyString name, Slug slug, HierarchyPath hierarchyPath, Guid? parentId = null)
     {
@@ -76,7 +83,10 @@ public class Department
             throw new DomainException("Location cannot be null.");
         }
         
-        return DepartmentLocation.Create(this, location);
+        DepartmentLocation departmentLocation = DepartmentLocation.Create(this, location);
+        _locations.Add(departmentLocation);
+
+        return departmentLocation;
     }
 
     public void RemoveLocation(Location location)
@@ -86,7 +96,7 @@ public class Department
             throw new DomainException("Location cannot be null.");
         }
         
-        var departmentLocation = _locations.FirstOrDefault(dl => dl.LocationId == location.Id);
+        DepartmentLocation? departmentLocation = _locations.FirstOrDefault(dl => dl.LocationId == location.Id);
 
         if (departmentLocation == null)
         {
@@ -103,7 +113,10 @@ public class Department
             throw new DomainException("Post cannot be null.");
         }
 
-        return DepartmentPosition.Create(this, post);
+        DepartmentPosition departmentPosition = DepartmentPosition.Create(this, post);
+        _post.Add(departmentPosition);
+
+        return departmentPosition;
     }
 
     public void RemovePost(Post post)

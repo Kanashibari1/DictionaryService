@@ -30,9 +30,34 @@ public class HierarchyPath
             throw new DomainException("Parent path cannot be null.");
         }
 
-        string newPath = $"{parentPath.Value}/{childId}/";
+        string newPath = $"{parentPath.Value}{childId}/";
         List<Guid> newAncestors = parentPath.Ancestors.Append(childId).ToList();
         
         return new HierarchyPath(newPath, newAncestors);
+    }
+
+    public static HierarchyPath Restore(string value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            throw new DomainException("Hierarchy path cannot be empty.");
+        }
+
+        if (!value.StartsWith(Separator) || !value.EndsWith(Separator))
+        {
+            throw new DomainException("Hierarchy path has invalid format.");
+        }
+
+        Guid[] ancestors = value
+            .Split(Separator, StringSplitOptions.RemoveEmptyEntries)
+            .Select(Guid.Parse)
+            .ToArray();
+
+        if (ancestors.Length == 0)
+        {
+            throw new DomainException("Hierarchy path must contain at least one department id.");
+        }
+
+        return new HierarchyPath(value, ancestors);
     }
 }

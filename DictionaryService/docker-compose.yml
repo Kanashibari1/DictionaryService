@@ -1,0 +1,16 @@
+services:
+  dictionary-service-postgres:
+    container_name: dictionary-service-postgres
+    image: postgres:18-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: dictionary_service_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5434:5432"
+    volumes:
+      - dictionary-service-postgres-v18-data:/var/lib/postgresql
+
+volumes:
+  dictionary-service-postgres-v18-data:

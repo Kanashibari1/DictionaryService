@@ -4,14 +4,20 @@ namespace DictionaryService.Domain.Entities;
 
 public class Post
 {
-    public Guid Id { get;}
+    public Guid Id { get; private set; }
     public NonEmptyString Title { get; private set; }
-    public NonEmptyString Description { get; private set; }
+    public NonEmptyString? Description { get; private set; }
     
-    private readonly List<DepartmentPosition> _departments;
-    public List<DepartmentPosition> Departments => _departments;
+    private readonly List<DepartmentPosition> _departments = new();
+    public IReadOnlyList<DepartmentPosition> Departments => _departments;
 
-    private Post(Guid id, NonEmptyString title, NonEmptyString description = null)
+    private Post()
+    {
+        Title = null!;
+        Description = null;
+    }
+
+    private Post(Guid id, NonEmptyString title, NonEmptyString? description = null)
     {
         Id = id;
         Title = title;
@@ -28,7 +34,7 @@ public class Post
         Title = newTitle;
     }
 
-    public void UpdateDescription(NonEmptyString newDescription)
+    public void UpdateDescription(NonEmptyString? newDescription)
     {
         Description = newDescription;
     }

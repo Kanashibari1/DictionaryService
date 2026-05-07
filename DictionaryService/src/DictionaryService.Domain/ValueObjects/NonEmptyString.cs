@@ -14,9 +14,9 @@ public class NonEmptyString
 
     public static NonEmptyString Create(string value, string paramName = "Value")
     {
-        if (string.IsNullOrEmpty(value))
+        if (string.IsNullOrWhiteSpace(value))
         {
-            throw new DomainException($"{{paramName}} cannot be empty or whitespace.");
+            throw new DomainException($"{paramName} cannot be empty or whitespace.");
         }
 
         if (value.Length > 255)
